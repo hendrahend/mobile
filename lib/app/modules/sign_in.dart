@@ -31,7 +31,7 @@ class SignInPage extends StatelessWidget {
             // Email TextField
             CustomTextField(
               onChanged: (value) => loginController.setEmail(value),
-              hintText: 'Email',
+              hintText: 'Email or Username',
               icon: Icons.email,
             ),
             const SizedBox(height: 20),

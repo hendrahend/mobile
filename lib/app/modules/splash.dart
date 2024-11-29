@@ -44,7 +44,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 CircleAvatar(
                   radius: 50,
                   backgroundImage: NetworkImage(
-                      'https://th.bing.com/th/id/OIP.u4sSeVPH3eHg-W6YvtkzBwHaHa?w=178&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'), // Your logo image
+                      'https://th.bing.com/th/id/OIP.pXL0MqW_4A1OgxUpNbngmAHaHa?w=172&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'), // Your logo image
                 ),
                 SizedBox(height: 20),
                 Text(

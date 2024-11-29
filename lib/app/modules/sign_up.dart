@@ -28,6 +28,11 @@ class SignUpPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const CustomTextField(
+              hintText: 'Username',
+              icon: Icons.abc_outlined,
+            ),
+            const SizedBox(height: 20),
+            const CustomTextField(
               hintText: 'Email',
               icon: Icons.email,
             ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:testing1/app/modules/profile_page.dart';
 import 'home_controller.dart';
 import 'settings_page.dart';
+import 'product_page.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -14,11 +15,12 @@ class HomePage extends StatelessWidget {
     // const Center(
     //     child: Text("This is the Profile Page.",
     //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+    CardListScreen(),
     ProfilePage(),
     SettingsPage(),
-    const Center(
-        child: Text("This is the Profile Page.",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+    // const Center(
+    //     child: Text("This is the Profile Page.",
+    //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
     // Center(
     //   child: Column(
     //     mainAxisAlignment: MainAxisAlignment.center,
@@ -44,6 +46,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeController homeController = Get.put(HomeController());
     homeController.loadUser();
+
     return Scaffold(
       appBar: AppBar(
         title: Obx(
@@ -61,16 +64,16 @@ class HomePage extends StatelessWidget {
               label: "Home",
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.workspace_premium),
+              label: "Products",
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: "Profile",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: "Settings",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: "Account",
             ),
           ],
           selectedItemColor: Colors.blue[800],

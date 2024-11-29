@@ -35,5 +35,6 @@ class HomeController extends GetxController {
       username: user['username'],
       gender: user['gender'],
     );
+    print(profile.value.firstName);
   }
 }
