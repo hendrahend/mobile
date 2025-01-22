@@ -8,6 +8,7 @@ class BookingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     controller.getData();
+    controller.getRoom();
 
     return Scaffold(
       body: Column(
@@ -33,7 +34,11 @@ class BookingPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: controller.bookingList.length,
                 itemBuilder: (context, index) {
-                  final room = controller.bookingList[index];
+                  final booking = controller.bookingList[index];
+                  final roomName = controller.rooms.firstWhere(
+                    (room) => room['id'] == booking.roomId,
+                  );
+                  final nameR = roomName['name'];
                   return Card(
                     margin: const EdgeInsets.all(8.0),
                     elevation: 4,
@@ -41,13 +46,11 @@ class BookingPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
-                      title: Text(
-                        "Booking ID: ${room.id}",
-                      ),
+                      title: Text("Room: $nameR"),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Booking Date: ${room.bookingDate}'),
+                          Text('Booking Date: ${booking.bookingDate}'),
                         ],
                       ),
                       trailing: Row(
@@ -56,13 +59,14 @@ class BookingPage extends StatelessWidget {
                           IconButton(
                             icon: const Icon(Icons.edit, color: Colors.blue),
                             onPressed: () {
-                              _showUpdateRoomPopup(context, controller, room);
+                              _showUpdateRoomPopup(
+                                  context, controller, booking);
                             },
                           ),
                           IconButton(
                             icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () async {
-                              await controller.deleteBooking(room.id);
+                              await controller.deleteBooking(booking.id);
                               controller.bookingList.removeAt(index);
                             },
                           ),
@@ -85,24 +89,57 @@ class BookingPage extends StatelessWidget {
 
   void _showUpdateRoomPopup(
       BuildContext context, BookingController controller, Booking booking) {
-    final bookingDateController = TextEditingController();
+    // final bookingDateController = TextEditingController();
+    final bookingDateController =
+        TextEditingController(text: booking.bookingDate.toString());
     int? selectedroomId = booking.roomId;
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Update Room'),
+          title: const Text('Update Booking'),
           content: SingleChildScrollView(
             child: Column(
               children: [
                 TextField(
                   controller: bookingDateController,
-                  decoration: const InputDecoration(labelText: 'Booking Date'),
+                  decoration: const InputDecoration(
+                    labelText: "Booking Date",
+                    border: OutlineInputBorder(),
+                  ),
                   readOnly: true,
-                  onTap: () async {},
+                  onTap: () async {
+                    DateTime? selectedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.parse(booking.bookingDate),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+                    if (selectedDate != null) {
+                      bookingDateController.text =
+                          selectedDate.toIso8601String().split('T').first;
+                    }
+                  },
                 ),
-                // Add other fields as needed
+
+                // TextField(
+                //   controller: bookingDateController,
+                //   decoration: const InputDecoration(labelText: 'Booking Date'),
+                //   readOnly: true,
+                //   onTap: () async {
+                //     DateTime? pickedDate = await showDatePicker(
+                //       context: context,
+                //       initialDate: DateTime.parse(booking.bookingDate),
+                //       firstDate: DateTime(2000),
+                //       lastDate: DateTime(2101),
+                //     );
+                //     if (pickedDate != null) {
+                //       bookingDateController.text = pickedDate.toString();
+                //     }
+                //   },
+                // ),
+                // Add other fields here
               ],
             ),
           ),

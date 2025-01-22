@@ -8,7 +8,7 @@ class RoomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     controller.getData();
-
+    controller.getCategory();
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,6 +34,10 @@ class RoomPage extends StatelessWidget {
                 itemCount: controller.roomList.length,
                 itemBuilder: (context, index) {
                   final room = controller.roomList[index];
+                  final getCategoryName = controller.categories.firstWhere(
+                    (category) => category['id'] == room.categoryId,
+                  );
+                  final nameR = getCategoryName['name'];
                   return Card(
                     margin: const EdgeInsets.all(8.0),
                     elevation: 4,
@@ -54,7 +58,7 @@ class RoomPage extends StatelessWidget {
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Category: ${room.categoryId}'),
+                          Text('Category: $nameR'),
                           Text('Price: ${room.price}'),
                           Text('Capacity: ${room.capacity}'),
                           Text('Description: ${room.description}'),

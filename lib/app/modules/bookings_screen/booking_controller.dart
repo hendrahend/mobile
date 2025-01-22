@@ -47,7 +47,7 @@ class BookingController extends GetxController {
         bookingList.value =
             data.map((bookings) => Booking.fromJson(bookings)).toList();
       } else {
-        Get.snackbar('Error', 'Failed to fetch todos: ${response.body}');
+        Get.snackbar('Error', 'Failed to fetch: ${response.body}');
       }
     } catch (e) {
       Get.snackbar('Error', 'Something went wrong: $e');
