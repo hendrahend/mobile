@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     // ProductPage(),
     BookingPage(),
     RoomPage(),
-    CategoryPage(),
+    // CategoryPage(),
     ProfilePage(),
     SettingsPage(),
   ];
@@ -32,8 +32,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Obx(
-            () => Text("Welcome ${homeController.profile.value.firstName}")),
+        title: Obx(() => Text("Welcome ${homeController.profile.value.name}!")),
       ),
       body: Obx(() => pages[controller.currentIndex.value]),
       bottomNavigationBar: Obx(
@@ -54,10 +53,10 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.room_preferences),
               label: "Room",
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.category),
-              label: "Category",
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.category),
+            //   label: "Category",
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: "Profile",

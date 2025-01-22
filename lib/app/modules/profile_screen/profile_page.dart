@@ -28,19 +28,18 @@ class ProfilePage extends StatelessWidget {
                         as ImageProvider,
               )),
           const SizedBox(height: 20),
-          Obx(() => CustomTextField(
-                label: 'Username',
-                hintText: 'Username',
-                icon: Icons.abc_sharp,
-                text: '${homeController.profile.value.name}',
-              )),
+          // Obx(() => CustomTextField(
+          //       label: 'Username',
+          //       hintText: 'Username',
+          //       icon: Icons.abc_sharp,
+          //       text: '${homeController.profile.value.name}',
+          //     )),
           const SizedBox(height: 20),
           Obx(() => CustomTextField(
-                label: 'Full Name',
-                hintText: 'Full Name',
+                label: 'Name',
+                hintText: 'Name',
                 icon: Icons.person,
-                text:
-                    '${homeController.profile.value.firstName} ${homeController.profile.value.lastName}',
+                text: '${homeController.profile.value.name}',
               )),
           const SizedBox(height: 20),
           Obx(() => CustomTextField(
@@ -49,13 +48,13 @@ class ProfilePage extends StatelessWidget {
                 icon: Icons.email,
                 text: '${homeController.profile.value.email}',
               )),
-          const SizedBox(height: 20),
-          Obx(() => CustomTextField(
-                label: 'Gender',
-                hintText: 'Gender',
-                icon: Icons.people,
-                text: '${homeController.profile.value.gender}',
-              )),
+          // const SizedBox(height: 20),
+          // Obx(() => CustomTextField(
+          //       label: 'Gender',
+          //       hintText: 'Gender',
+          //       icon: Icons.people,
+          //       text: '${homeController.profile.value.gender}',
+          //     )),
         ],
       ),
     );
