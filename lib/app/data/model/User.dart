@@ -8,6 +8,7 @@ class User {
   final String lastName;
   final String gender;
   final String image;
+  final String name;
 
   User({
     this.accessToken = "",
@@ -19,5 +20,6 @@ class User {
     this.lastName = "",
     this.gender = "",
     this.image = "",
+    this.name = "",
   });
 }

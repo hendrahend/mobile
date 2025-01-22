@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testing1/app/modules/sign_in.dart';
-import 'sign_up.dart';
-import 'home_page.dart';
-import 'login_controller.dart';
+import 'package:testing1/app/modules/login_screen/sign_in.dart';
+import 'home_screen/home_page.dart';
+import 'login_screen/login_controller.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -19,7 +18,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
     controller.loadUser();
     Future.delayed(const Duration(seconds: 3), () {
-      if (controller.user.value == "") {
+      // print('User value: ${controller.user.value}');
+      if (controller.user.value == null || controller.user.value == "") {
         Get.off(() => SignInPage());
       } else {
         Get.off(() => HomePage());

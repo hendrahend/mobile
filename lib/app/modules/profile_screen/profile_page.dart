@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing1/app/modules/btn.dart';
-import 'package:testing1/app/modules/home_controller.dart';
+import 'package:testing1/app/modules/home_screen/home_controller.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
                 label: 'Username',
                 hintText: 'Username',
                 icon: Icons.abc_sharp,
-                text: '${homeController.profile.value.username}',
+                text: '${homeController.profile.value.name}',
               )),
           const SizedBox(height: 20),
           Obx(() => CustomTextField(

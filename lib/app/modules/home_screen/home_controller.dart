@@ -28,13 +28,8 @@ class HomeController extends GetxController {
     // username.value = user['username'];
 
     profile.value = User(
-      firstName: user['firstName'],
-      lastName: user['lastName'],
+      name: user['name'],
       email: user['email'],
-      image: user['image'],
-      username: user['username'],
-      gender: user['gender'],
     );
-    print(profile.value.firstName);
   }
 }

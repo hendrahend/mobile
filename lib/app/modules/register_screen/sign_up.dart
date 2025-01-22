@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import '../btn.dart';
 import 'package:get/get.dart';
-import 'sign_up.dart';
-import 'btn.dart';
-import 'login_controller.dart';
+import '../login_screen/sign_in.dart';
+import 'register_controller.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({super.key});
-
-  final LoginController loginController =
-      Get.put(LoginController()); // Initialize the controller
+class SignUpPage extends StatelessWidget {
+  final RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class SignInPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome Back',
+              'Create Account',
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -28,35 +25,45 @@ class SignInPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            // Email TextField
             CustomTextField(
-              onChanged: (value) => loginController.setEmail(value),
-              hintText: 'Email or Username',
-              icon: Icons.email,
+              hintText: 'Name',
+              icon: Icons.abc_outlined,
+              onChanged: (value) => registerController.setName(value),
             ),
             const SizedBox(height: 20),
-            // Password TextField
             CustomTextField(
-              onChanged: (value) => loginController.setPassword(value),
+              hintText: 'Email',
+              icon: Icons.email,
+              onChanged: (value) => registerController.setEmail(value),
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
               hintText: 'Password',
               icon: Icons.lock,
               isPassword: true,
-              // border: OutlineInputBorder(),
+              onChanged: (value) => registerController.setPassword(value),
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              hintText: 'Confirm Password',
+              icon: Icons.lock,
+              isPassword: true,
+              onChanged: (value) =>
+                  registerController.setPasswordConfirmation(value),
             ),
             const SizedBox(height: 30),
             CustomButton(
-              text: 'Sign In',
-              onPressed: () {
-                loginController.login(); // Call the login function
-              },
+              text: 'Sign Up',
+              onPressed: () => {registerController.register()},
             ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Get.to(() => SignUpPage());
+                Get.to(() =>
+                    SignInPage()); // Using GetX navigation to go to SignInPage
               },
               child: const Text(
-                'Don\'t have an account? Sign Up',
+                'Already have an account? Sign In',
                 style: TextStyle(color: Colors.blueAccent),
               ),
             ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testing1/app/modules/profile_page.dart';
+import 'package:testing1/app/modules/profile_screen/profile_page.dart';
+import 'package:testing1/app/modules/room_screen/room_page.dart';
+import 'package:testing1/app/modules/categories_screen/category_page.dart';
+import 'package:testing1/app/modules/bookings_screen/booking_page.dart';
 import 'home_controller.dart';
-import 'settings_page.dart';
-import 'product_page.dart';
+import '../setting_screen/settings_page.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -15,31 +17,12 @@ class HomePage extends StatelessWidget {
     // const Center(
     //     child: Text("This is the Profile Page.",
     //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-    CardListScreen(),
+    // ProductPage(),
+    BookingPage(),
+    RoomPage(),
+    CategoryPage(),
     ProfilePage(),
     SettingsPage(),
-    // const Center(
-    //     child: Text("This is the Profile Page.",
-    //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-    // Center(
-    //   child: Column(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: [
-    //       const Text(
-    //         "Settings Page",
-    //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    //       ),
-    //       const SizedBox(height: 20),
-    //       ElevatedButton(
-    //         onPressed: () {
-    //           Get.find<LoginController>().logout(); // Call logout method
-    //         },
-    //         style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
-    //         child: const Text("Logout", style: TextStyle(color: Colors.white)),
-    //       ),
-    //     ],
-    //   ),
-    // ),
   ];
 
   @override
@@ -64,8 +47,16 @@ class HomePage extends StatelessWidget {
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.workspace_premium),
-              label: "Products",
+              icon: Icon(Icons.book),
+              label: "Booking",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.room_preferences),
+              label: "Room",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.category),
+              label: "Category",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
